@@ -1,0 +1,33 @@
+{
+  "name": "e-commerce-app",
+  "version": "1.0.0",
+  "description": "An E-commerce app backend mern stack",
+  "main": "index.js",
+  "scripts": {
+   "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jitokj/E-commerce_backend.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "mern",
+    "flipkart-clone"
+  ],
+  "author": "jito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jitokj/E-commerce_backend/issues"
+  },
+  "homepage": "https://github.com/jitokj/E-commerce_backend#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.1",
+    "mongoose": "^5.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
