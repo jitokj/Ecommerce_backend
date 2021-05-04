@@ -17,7 +17,7 @@ const database = process.env.MONGO_DATABASE;
 
 //routes
 
-const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
 
 
 // middle-ware
@@ -27,7 +27,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use("/api",userRoutes);
+app.use("/api",authRoutes);
 
 
 // Server
