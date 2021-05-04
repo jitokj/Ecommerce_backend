@@ -15,30 +15,20 @@ const mongoAdmin = process.env.MONGO_ADMIN;
 const database = process.env.MONGO_DATABASE;
 
 
+//routes
+
+const userRoutes = require("./routes/user");
 
 
+// middle-ware
 
-// express body Parser
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
 
+app.use("/api",userRoutes);
 
-
-
-//routes
-
-app.get('/',(req,res,next)=>{
-    res.status(200).json({
-        message: "hello from Server"
-    });
-})
-app.post("/data",(req,res,next)=>{
-    res.status(201).json({
-        message: req.body
-    })
-})
 
 // Server
 app.listen(port,()=>{
@@ -46,7 +36,9 @@ app.listen(port,()=>{
     mongoose.connect(`mongodb+srv://${mongoAdmin}:${mongoPass}@cluster0.rxznn.mongodb.net/${database}?retryWrites=true&w=majority`,
  {
      useNewUrlParser: true, 
-     useUnifiedTopology: true}).then(()=>{
+     useUnifiedTopology: true,
+     useCreateIndex: true
+    }).then(()=>{
      console.log("database connected");
  });
 
