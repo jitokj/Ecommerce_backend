@@ -1,6 +1,5 @@
 const User = require("../../models/user");
 const jwt = require("jsonwebtoken");
-
 const secret = process.env.JWT_SECRET;
 
 exports.postSignUp = (req, res) => {
@@ -51,7 +50,9 @@ exports.postSignIn = (req, res) => {
     }
     if (user) {
       if (user.authenticate(req.body.password) && user.role === "admin") {
-        const token = jwt.sign({ _id: user._id }, secret, { expiresIn: "6h" });
+        const token = jwt.sign({ _id: user._id, role: user.role }, secret, {
+          expiresIn: "6h",
+        });
         const { _id, firstName, lastName, email, role, fullName } = user;
         res.status(200).json({
           token,
@@ -75,11 +76,4 @@ exports.postSignIn = (req, res) => {
       });
     }
   });
-};
-
-exports.requireSignIn = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const user = jwt.verify(token, secret);
-  req.user = user;
-  next();
 };

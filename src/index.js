@@ -16,6 +16,8 @@ const database = process.env.MONGO_DATABASE;
 
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin/auth");
+const categoryRoutes = require("./routes/category");
+const productRoutes = require("./routes/product");
 
 // middle-ware
 
@@ -28,6 +30,8 @@ app.use(
 
 app.use("/api", authRoutes);
 app.use("/api", adminRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
 // Server
 app.listen(port, () => {
