@@ -32,7 +32,6 @@ exports.postSignUp = (req, res) => {
         });
       }
       if (data) {
-        console.log("created user-->", data);
         return res.status(201).json({
           message: "Admin created Successfuly",
         });

@@ -25,11 +25,13 @@ exports.postAddCategory = (req, res) => {
     name: req.body.name,
     slug: slugify(req.body.name),
   };
+  if (req.file) {
+    let categoryUrl = process.env.API + "/public/" + req.file.filename;
+    categoryObj.categoryImage = categoryUrl;
+  }
   if (req.body.parentId) {
-    console.log(req.body.parentId);
     categoryObj.parentId = req.body.parentId;
   }
-  console.log(categoryObj);
   const _cat = new Category(categoryObj);
 
   _cat.save((error, category) => {

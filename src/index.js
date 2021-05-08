@@ -1,6 +1,7 @@
 const express = require("express");
 const env = require("dotenv");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const app = express();
 
@@ -23,6 +24,7 @@ const cartRoutes = require("./routes/cart");
 // middle-ware
 
 app.use(express.json());
+app.use(express.static("/public", path.join(__dirname, "uploads")));
 app.use(
   express.urlencoded({
     extended: true,
